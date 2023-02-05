@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Intro Section-->
+    <section class="view intro-2">
+      <div class="mask rgba-gradient">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+
+          <!--Grid row-->
+          <div class="row  pt-5 mt-3">
+
+            <!--Grid column-->
+            <div class="col-md-12">
+
+              <div class="card" style="background-color: white;">
+                <div class="card-body">
+
+                  <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 font-weight-bold">
+                    <strong>REGISTER</strong>
+                  </h2>
+                  <hr>
+
+                  <!--Grid row-->
+                  <div class="row mt-5">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 ml-lg-5 ml-md-3">
+
+                      <!--Grid row-->
+                      <div class="row pb-4">
+                        <div class="col-2 col-lg-1">
+                          <i class="fas fa-university indigo-text fa-lg"></i>
+                        </div>
+                        <div class="col-10">
+                          <h4 class="font-weight-bold mb-4">
+                            <strong>Safety</strong>
+                          </h4>
+                          <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                            nam, aperiam
+                            minima assumenda deleniti hic.</p>
+                        </div>
+                      </div>
+                      <!--Grid row-->
+
+                      <!--Grid row-->
+                      <div class="row pb-4">
+                        <div class="col-2 col-lg-1">
+                          <i class="fas fa-desktop deep-purple-text fa-lg"></i>
+                        </div>
+                        <div class="col-10">
+                          <h4 class="font-weight-bold mb-4">
+                            <strong>Technology</strong>
+                          </h4>
+                          <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                            nam, aperiam
+                            minima assumenda deleniti hic.</p>
+                        </div>
+                      </div>
+                      <!--Grid row-->
+
+                      <!--Grid row-->
+                      <div class="row pb-4">
+                        <div class="col-12">
+                            <!-- Terms of service -->
+                            <p>
+                                By clicking <em>Sign up</em> you agree to our
+                                <a href="" target="_blank">terms of service</a>
+                            </p>
+                            <!-- Terms of service --><hr>
+                            <p>
+                                Already have an account?
+                                <a href="{% url 'login' %}" target="_blank">Log in</a>
+                            </p>
+                        </div>
+                      </div>
+                      <!--Grid row-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-5">
+
+                      <!--Grid row-->
+                      <div class="row pb-4 d-flex justify-content-center mb-4">
+
+                        <h4 class="mt-3 mr-4">
+                          <strong>Login with</strong>
+                        </h4>
+
+                        <div class="inline-ul text-center d-flex justify-content-center">
+                          <a href="#" class="p-2 m-2 fa-lg tw-ic">
+                            <i class="fab fa-twitter fa-lg indigo-text"></i>
+                          </a>
+                          <a href="#" class="p-2 m-2 fa-lg li-ic">
+                            <i class="fab fa-linkedin-in fa-lg indigo-text"> </i>
+                          </a>
+                          <a href="#" class="p-2 m-2 fa-lg ins-ic">
+                            <i class="fab fa-facebook fa-lg indigo-text"> </i>
+                          </a>
+                        </div>
+
+                        <h4 class="mt-3 ml-4">
+                          <strong>or:</strong>
+                        </h4>
+
+                      </div>
+                      <!--/Grid row-->
+                      {% if messages %}
+                          {% for message in messages %}
+                              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                  <strong>Holy guacamole!</strong> {{ message }}
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                          {% endfor %}
+                      {% endif %}
+                      <!--Body-->
+                      <form action="{% url 'register' %}" method="POST">
+                          {% csrf_token %}
+
+                          <div class="md-form">
+                            <i class="fas fa-envelope prefix"></i>
+                            <input type="text" id="orangeForm-email" name="email" value="{{ data.email }}" class="form-control">
+                            <label for="orangeForm-email">Your email</label>
+                          </div>
+
+                          <div class="md-form">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" id="orangeForm-name" name="firstname" value="{{ data.firstname }}" class="form-control">
+                            <label for="orangeForm-name" class="">Firstname</label>
+                          </div>
+
+                          <div class="md-form">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" id="orangeForm-name" name="lastname" value="{{ data.lastname }}" class="form-control">
+                            <label for="orangeForm-name" class="">Lastname</label>
+                          </div>
+
+                          <div class="md-form">
+                            <i class="fas fa-user-circle prefix"></i>
+                            <input type="text" id="orangeForm-name" name="username" value="{{ data.username }}" class="form-control">
+                            <label for="orangeForm-name" class="">Username</label>
+                          </div>
+
+                          <div class="md-form">
+                            <i class="fas fa-lock prefix"></i>
+                            <input type="password" id="orangeForm-pass" name="password" class="form-control">
+                            <label for="orangeForm-pass">Your password</label>
+                          </div>
+
+                          <div class="md-form">
+                            <i class="fas fa-key prefix"></i>
+                            <input type="password" id="orangeForm-pass" name="confirm-password" class="form-control">
+                            <label for="orangeForm-pass">Confirm password</label>
+                          </div>
+
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-indigo btn-rounded mt-5 waves-effect waves-light">Sign up</button>
+                          </div>
+                      </form>
+                    </div>
+                    <!--Grid column-->
+
+                  </div>
+                  <!--Grid row-->
+
+                </div>
+              </div>
+
+            </div>
+            <!--Grid column-->
+
+          </div>
+          <!--Grid row-->
+
+        </div>
+      </div>
+    </section>
+    <!--Intro Section-->
+{% endblock %}
