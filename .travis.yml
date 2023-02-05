@@ -1,0 +1,15 @@
+language: python
+
+python:
+    - "3.9"
+env:
+    - SECRET_KEY='TEST'
+services:
+   - postgresql
+install:
+    - pip install
+
+script:
+    -  coverage run --source='accounts' manage.py test && coverage report && coverage html
+after_success:
+    - codecov
