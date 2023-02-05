@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <!-- Main Section Start -->
+        {{user.username}}
+
+        <form action="{% url 'logout'%}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Logout" class="btn btn-info">
+
+        </form>
+    <!-- Main Section End -->
+    {% endblock %}

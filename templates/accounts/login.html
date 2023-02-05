@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Intro Section-->
+    <section class="view intro-2">
+      <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+
+              <!--Form with header-->
+              <div class="card wow fadeIn animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-iteration-count: 1; animation-delay: 0.3s;">
+                <div class="card-body">
+
+                  <!--Header-->
+                  <div class="form-header purple-gradient">
+                    <h3><i class="fas fa-user mt-2 mb-2"></i> Log in:</h3>
+                  </div>
+                  <form action="{% url 'login' %}" method="POST">
+                      {% csrf_token %}
+                      <!--Body-->
+                      <div class="md-form">
+                        <i class="fas fa-user prefix white-text"></i>
+                        <input type="text" id="orangeForm-name" name="username" value="{{ data.username }}" class="form-control">
+                        <label for="orangeForm-name">Username</label>
+                      </div>
+
+                      <div class="md-form">
+                        <i class="fas fa-lock prefix white-text"></i>
+                        <input type="password" id="orangeForm-pass" name="password" class="form-control">
+                        <label for="orangeForm-pass">Password</label>
+                      </div>
+
+                      <div class="text-center">
+                        <input type="submit" class="btn purple-gradient btn-lg waves-effect waves-light" value="Login">
+                        <hr>
+                        <div class="inline-ul text-center d-flex justify-content-center">
+                          <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text"></i></a>
+                          <a class="p-2 m-2 fa-lg li-ic"><i class="fab fa-linkedin-in white-text"> </i></a>
+                          <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+                        </div>
+                          <p>Need an account? <a href="{% url 'register' %}">Register</a></p>
+                      </div>
+                  </form>
+
+                </div>
+              </div>
+              <!--/Form with header-->
+              {% if messages %}
+                  {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                          <strong>Holy guacamole!</strong> {{ message }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Intro Section-->
+{% endblock %}
