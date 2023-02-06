@@ -79,7 +79,7 @@ class RegistrationView(View):
         )
         email_message.send()
 
-        messages.add_message(request, messages.SUCCESS, "Account created successfully")
+        messages.add_message(request, messages.SUCCESS, "Account created successfully.")
         return redirect('login')
 
 
